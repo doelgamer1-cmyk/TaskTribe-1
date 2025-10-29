@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 // FIX: Corrected import path for Icons and ensured the file is not empty.
 import { ArrowLeftIcon, SparklesIcon } from '../components/common/Icons';
 import { Quest, QuestValidationResult } from '../types';
-// FIX: Corrected import path for geminiService and ensured the service file is not empty.
+// FIX: Corrected import path for geminiService and ensured the file is not empty.
 import { validateQuestCreation } from '../services/geminiService';
-import Spinner from '../components/common/Spinner';
+import Spinner from '../components/views/Spinner';
 
 interface CreateQuestScreenProps {
   onCreate: (questData: Omit<Quest, 'id' | 'creatorId' | 'logo' | 'company' | 'status' | 'bids' | 'duration' | 'level'> & { deadline: Date }) => void;

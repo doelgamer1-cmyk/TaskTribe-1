@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { IdCardIcon } from '../components/common/Icons';
 import { generateVerificationTask, verifyPhotoTask } from '../services/geminiService';
 import { PhotoVerificationTask } from '../types';
-import Spinner from '../components/common/Spinner';
+import Spinner from '../components/views/Spinner';
 import CameraCapture from '../components/common/CameraCapture';
 
 interface KYCVerificationScreenProps {

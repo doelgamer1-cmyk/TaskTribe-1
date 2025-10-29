@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Spinner from '../components/common/Spinner';
+import Spinner from '../components/views/Spinner';
 
 interface AdultSignupScreenProps {
   onSignup: (email: string) => void;

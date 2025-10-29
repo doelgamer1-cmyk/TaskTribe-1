@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import Spinner from '../components/common/Spinner';
+import Spinner from '../components/views/Spinner';
 
 interface TeenSignupScreenProps {
   onSignup: (username: string, phone: string) => void;

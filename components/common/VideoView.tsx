@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 // FIX: Corrected import path for geminiService and ensured the service file is not empty.
 import { analyzeVideo } from '../../services/geminiService';
-import Spinner from './Spinner';
+import Spinner from '../views/Spinner';
 
 const MAX_FILE_SIZE_MB = 10;
 const MAX_FILE_SIZE_BYTES = MAX_FILE_SIZE_MB * 1024 * 1024;

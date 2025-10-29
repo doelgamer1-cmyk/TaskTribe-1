@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ShieldIcon } from '../components/common/Icons';
-import Spinner from '../components/common/Spinner';
+import Spinner from '../components/views/Spinner';
 
 interface GuardianVerificationScreenProps {
   onVerify: (phone: string) => void;

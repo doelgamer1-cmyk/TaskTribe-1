@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ShieldIcon } from '../components/common/Icons';
 import { generateQuestVerificationTask, verifyQuestCompletionPhoto } from '../services/geminiService';
 import { PhotoVerificationTask, Quest } from '../types';
-import Spinner from '../components/common/Spinner';
+import Spinner from '../components/views/Spinner';
 import CameraCapture from '../components/common/CameraCapture';
 
 interface QuestVerificationScreenProps {
