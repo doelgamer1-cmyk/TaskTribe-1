@@ -1,0 +1,19 @@
+{
+  "name": "tasktribe-app",
+  "version": "1.0.0",
+  "description": "TaskTribe platform for teen users",
+  "main": "index.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test"
+  },
+  "dependencies": {
+    "@google/genai": "^1.27.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.3"
+  }
+}
