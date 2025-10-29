@@ -2,8 +2,14 @@ import { GoogleGenAI, Type, GenerateContentResponse } from "@google/genai";
 import { QuestValidationResult, ModerationResult, PhotoVerificationTask, PhotoVerificationResult } from "./types";
 import { generateComplexCode } from '../utils';
 
-// FIX: Initialize the GoogleGenAI client according to guidelines
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// FIX: Add a check to ensure the API key is defined.
+// This satisfies TypeScript's strict type checking and fixes the GitHub Actions build failure.
+const apiKey = process.env.API_KEY;
+if (!apiKey) {
+  throw new Error("API_KEY environment variable not set. Please configure it in your environment or GitHub Secrets.");
+}
+
+const ai = new GoogleGenAI({ apiKey: apiKey });
 
 export const generateMapsResponse = async (
   prompt: string,
@@ -27,7 +33,6 @@ export const generateMapsResponse = async (
     };
   }
 
-  // FIX: Use ai.models.generateContent for map-grounded responses
   const response = await ai.models.generateContent({
     model: "gemini-2.5-flash",
     contents: prompt,
@@ -53,7 +58,6 @@ export const analyzeVideo = async (
     text: prompt,
   };
 
-  // FIX: Use gemini-2.5-pro for complex video analysis tasks
   const response = await ai.models.generateContent({
     model: 'gemini-2.5-pro',
     contents: { parts: [videoPart, textPart] },
@@ -82,7 +86,6 @@ export const validateQuestCreation = async (
     Proposed Budget: ₹${budget}
     `;
 
-  // FIX: Define a response schema for structured JSON output
   const responseSchema = {
     type: Type.OBJECT,
     properties: {
