@@ -2,12 +2,11 @@ import { GoogleGenAI, Type, GenerateContentResponse } from "@google/genai";
 import { QuestValidationResult, ModerationResult, PhotoVerificationTask, PhotoVerificationResult } from "../types";
 import { generateComplexCode } from '../utils';
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-
 export const generateMapsResponse = async (
   prompt: string,
   location: { latitude: number; longitude: number } | null
 ): Promise<GenerateContentResponse> => {
+  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
   const config: {
     tools: { googleMaps: {} }[];
     toolConfig?: any;
@@ -40,6 +39,7 @@ export const analyzeVideo = async (
   mimeType: string,
   prompt: string
 ): Promise<string> => {
+  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
   const videoPart = {
     inlineData: {
       data: videoBase64,
@@ -64,7 +64,7 @@ export const validateQuestCreation = async (
   description: string,
   budget: number
 ): Promise<QuestValidationResult> => {
-
+  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
   const prompt = `
     Analyze the following task posting for a platform called TaskTribe.
     
@@ -105,6 +105,7 @@ export const validateQuestCreation = async (
 };
 
 export const moderateContent = async (text: string): Promise<ModerationResult> => {
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
     const prompt = `
     You are a content moderator for a platform called TaskTribe which is used by teenagers. 
     Your role is to ensure the platform is safe and respectful.
@@ -155,6 +156,7 @@ export const moderateContent = async (text: string): Promise<ModerationResult> =
 };
 
 export const generateVerificationTask = async (): Promise<PhotoVerificationTask> => {
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
     const prompt = `Generate a simple, unique verification task for a user. The task should involve writing a short, random alphanumeric code on a piece of paper. The code should be 6 characters long, in the format XX-XXX or XXX-XX.
     
     Your response must be in the specified JSON format. Provide the code and a user-friendly instruction like "Write the following code on a piece of paper and hold it clearly in a selfie:".`;
@@ -182,6 +184,7 @@ export const generateVerificationTask = async (): Promise<PhotoVerificationTask>
 };
 
 export const verifyPhotoTask = async (imageBase64: string, taskCode: string): Promise<PhotoVerificationResult> => {
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
     const imagePart = {
         inlineData: {
             data: imageBase64,
@@ -228,6 +231,7 @@ export const verifyPhotoTask = async (imageBase64: string, taskCode: string): Pr
 };
 
 export const generateQuestVerificationTask = async (questTitle: string): Promise<PhotoVerificationTask> => {
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
     const code = generateComplexCode();
 
     const prompt = `A user completed a task: "${questTitle}". To verify their work, they need to take a photo of it with a unique code. The code is "${code}". Create a simple, user-friendly instruction telling them to write this code on paper and place it next to their completed work in a photo. For example, if it's a design on a screen, they should put the paper next to the screen. Your response must be a JSON object with an "instruction" field.`;
@@ -258,6 +262,7 @@ export const generateQuestVerificationTask = async (questTitle: string): Promise
 };
 
 export const verifyQuestCompletionPhoto = async (imageBase64: string, taskCode: string, questTitle: string, questDescription: string): Promise<PhotoVerificationResult> => {
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
     const imagePart = {
         inlineData: {
             data: imageBase64,
