@@ -1,5 +1,5 @@
 import { GoogleGenAI, Type, GenerateContentResponse } from "@google/genai";
-import { QuestValidationResult, ModerationResult, PhotoVerificationTask, PhotoVerificationResult } from "./types";
+import { QuestValidationResult, ModerationResult, PhotoVerificationTask, PhotoVerificationResult } from "../types";
 import { generateComplexCode } from '../utils';
 
 // FIX: Add a check to ensure the API key is defined.
