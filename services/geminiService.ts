@@ -2,14 +2,7 @@ import { GoogleGenAI, Type, GenerateContentResponse } from "@google/genai";
 import { QuestValidationResult, ModerationResult, PhotoVerificationTask, PhotoVerificationResult } from "../types";
 import { generateComplexCode } from '../utils';
 
-// FIX: Add a check to ensure the API key is defined.
-// This satisfies TypeScript's strict type checking and fixes the GitHub Actions build failure.
-const apiKey = process.env.API_KEY;
-if (!apiKey) {
-  throw new Error("API_KEY environment variable not set. Please configure it in your environment or GitHub Secrets.");
-}
-
-const ai = new GoogleGenAI({ apiKey: apiKey });
+const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 export const generateMapsResponse = async (
   prompt: string,
